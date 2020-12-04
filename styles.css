@@ -8,7 +8,8 @@
 body {
     display: flex;
     font-family: 'Open Sans', sans-serif;
-    background-color: #9b59b6;
+    /*background-color: #9b59b6;*/
+    background-image: url("https://pixabay.com/get/55e9d2404a53a814f6d1867dda29317c173ad8e6544c704f75287ad4924dc15c_1920.jpg");
     justify-content: center;
     align-items: center;
     min-height: 100vh;
@@ -16,7 +17,7 @@ body {
 }
 
 .container {
-    background-color: #ffffff;
+    background-color:#b1cbe1;
     border-radius: 5px;
     overflow: hidden;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
@@ -31,7 +32,7 @@ body {
     text-align: center;
 }
 
-.header h2 {
+.header h1 {
     margin: 0;
 }
 
@@ -58,19 +59,24 @@ body {
     font-family: inherit;
     padding: 10px;
     width: 100%;
+    text-align: center;
+}
+
+::placeholder {
+    color: rgb(114, 114, 114)
 }
 
 .form-control.success input {
-    border-color: #2ecc71;
+    border-color: black;
 }
 
 .form-control.error input {
-    border-color: #e74c3c
+    border-color: black/*#e74c3c*/;
 }
 
 .form-control i {
     position: absolute;
-    top: 40px;
+    top: 13px;
     right: 10px;
     visibility: hidden;
 }
@@ -98,8 +104,8 @@ body {
 }
 
 .form button {
-    background-color: #8e44ad;
-    border: 2px solid #8e44ad;
+    background-color: #1b435d;
+    border: 2px solid #000000;
     border-radius: 4px;
     color: white;
     font-size: 16px;
@@ -107,4 +113,5 @@ body {
     display: block;
     padding: 10px;
     width: 100%;
+    cursor: pointer;
 }

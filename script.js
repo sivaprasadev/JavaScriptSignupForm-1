@@ -75,7 +75,7 @@ function checkInputs() {
         setSuccessFor(password)
     }
     if (password2Value === '') {
-        setErrorFor(password2, 'This field Cannot be blank !')
+        setErrorFor(password2, 'Confirm Password Cannot be blank !')
 
     } else if (passwordValue !== password2Value) {
         setErrorFor(password2, 'Passwords does not match !')
