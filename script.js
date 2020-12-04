@@ -6,10 +6,10 @@ const password2 = document.getElementById('re-password')
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-    checkInputs();
-    finalCheck();
+    checkInputs();//It checks for user input data
+    finalCheck();//It checks whether all input fields are in a success stage or not
 })
-
+/*alertDisable function will disable success class when form submits data */
 function alertDisable(input1, input2, input3, input4) {
     const formControl = input1.parentElement
     const formControl1 = input2.parentElement
@@ -21,9 +21,9 @@ function alertDisable(input1, input2, input3, input4) {
     formControl3.className = 'form-control'
 }
 
-const sendData = (sRate, count) => {
-    if (sRate === count) {
-        alert('Thanks')
+const alertPrompt = (successInc, count) => {
+    if (successInc === count) {
+        alert('You have successfully registred :)')
         username.value = ''
         email.value = ''
         password.value = ''
@@ -34,13 +34,11 @@ const sendData = (sRate, count) => {
 
 const finalCheck = () => {
     let formCon = document.getElementsByClassName('form-control')
-    var count = formCon.length - 1;
+    var count = formCon.length - 1; //Total number of input field
     for (var i = 0; i < formCon.length; i++) {
         if (formCon[i].className === "form-control success") {
-            var sRate = 0 + i;
-            sendData(sRate, count)
-        } else {
-            return false
+            var successInc = i; // value of i will store here when each condition become true
+            alertPrompt(successInc, count)//function will call alert() if every input field is OK.
         }
     }
 
@@ -53,14 +51,12 @@ function checkInputs() {
     const passwordValue = password.value.trim()
     const password2Value = password2.value.trim()
     if (usernameValue === '') {
-        //show error
-        // add error class
         setErrorFor(username, 'Username Cannot be blank !')
 
+    } else if (usernameValue.length <= 5) {
+        setErrorFor(username, 'Username must be greater than 5 characters !')
     } else {
-        // add success class
         setSuccessFor(username)
-
     }
 
     if (emailValue === '') {
@@ -71,38 +67,27 @@ function checkInputs() {
         setSuccessFor(email)
 
     }
-
     if (passwordValue === '') {
-
-        //show error
-        // add error class
         setErrorFor(password, 'Password Cannot be blank !')
+    } else if (passwordValue.length < 8) {
+        setErrorFor(password, 'Password must be atleast 8 in length !')
     } else {
-        // add success class
         setSuccessFor(password)
     }
     if (password2Value === '') {
-
-        //show error
-        // add error class
         setErrorFor(password2, 'This field Cannot be blank !')
+
     } else if (passwordValue !== password2Value) {
         setErrorFor(password2, 'Passwords does not match !')
     } else {
-        // add success class
         setSuccessFor(password2)
-
     }
 }
 
 function setErrorFor(input, message) {
-    const formControl = input.parentElement; //.form-control
+    const formControl = input.parentElement;
     const small = formControl.querySelector('small')
-
-    //add error msg inside the small tag
     small.innerText = message
-
-    //add error class
     formControl.className = 'form-control error'
 }
 
